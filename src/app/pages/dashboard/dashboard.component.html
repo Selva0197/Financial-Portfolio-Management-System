@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Investment Portfolio Overview</h2>
+  
+    <div class="chart-grid">
+      <!-- Asset Allocation Pie Chart -->
+      <mat-card class="chart-card">
+        <h3>Asset Allocation</h3>
+        <canvas baseChart
+                [data]="assetAllocationData"
+                [type]="'pie'">
+        </canvas>
+      </mat-card>
+  
+      <!-- Portfolio Over Time Line Chart -->
+      <mat-card class="chart-card">
+        <h3>Performance Over Time</h3>
+        <canvas baseChart
+                [data]="portfolioLineChart"
+                [options]="lineOptions"
+                [type]="'line'">
+        </canvas>
+      </mat-card>
+  
+      <!-- Market Trends Radar Chart -->
+      <mat-card class="chart-card">
+        <h3>Market Trends</h3>
+        <canvas baseChart
+                [data]="marketTrendsRadar"
+                [type]="'radar'">
+        </canvas>
+      </mat-card>
+  
+      <!-- Benchmark Comparison Bar Chart -->
+      <mat-card class="chart-card">
+        <h3>Benchmark Comparison</h3>
+        <canvas baseChart
+                [data]="benchmarkBarData"
+                [options]="barOptions"
+                [type]="'bar'">
+        </canvas>
+      </mat-card>
+  
+      <!-- Bubble Chart: Asset Risk vs Return -->
+      <mat-card class="chart-card">
+        <h3>Risk vs Return</h3>
+        <canvas baseChart
+                [data]="bubbleChartData"
+                [type]="'bubble'">
+        </canvas>
+      </mat-card>
+  
+      <!-- Animated Progress Bar (simulate progressive growth) -->
+      <mat-card class="chart-card">
+        <h3>Annual Growth Progress</h3>
+        <canvas baseChart
+                [data]="progressChartData"
+                [options]="progressChartOptions"
+                [type]="'bar'">
+        </canvas>
+      </mat-card>
+    </div>
+  </div>
+  

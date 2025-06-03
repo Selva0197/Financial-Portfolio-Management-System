@@ -1,0 +1,72 @@
+
+<div class="form-container">
+    <form [formGroup]="investmentForm" (ngSubmit)="onReview()" *ngIf="!submitted" class="investment-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Asset Type</mat-label>
+        <mat-select formControlName="assetType" required>
+          <mat-option value="stocks">Stocks</mat-option>
+          <mat-option value="bonds">Bonds</mat-option>
+          <mat-option value="crypto">Cryptocurrency</mat-option>
+          <mat-option value="real-estate">Real Estate</mat-option>
+        </mat-select>
+        <mat-error *ngIf="investmentForm.get('assetType')?.hasError('required')">
+          Asset Type is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" formControlName="quantity" required />
+        <mat-error *ngIf="investmentForm.get('quantity')?.hasError('required')">
+          Quantity is required
+        </mat-error>
+        <mat-error *ngIf="investmentForm.get('quantity')?.hasError('min')">
+          Quantity must be at least 1
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput type="number" formControlName="purchasePrice" required />
+        <mat-error *ngIf="investmentForm.get('purchasePrice')?.hasError('required')">
+          Purchase Price is required
+        </mat-error>
+        <mat-error *ngIf="investmentForm.get('purchasePrice')?.hasError('min')">
+          Price must be more than 0
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Purchase Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="purchaseDate"
+          [min]="minDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="investmentForm.get('purchaseDate')?.hasError('required')">
+          Purchase Date is required
+        </mat-error>
+      </mat-form-field>
+      
+  
+      <button mat-raised-button color="primary" type="submit">Review</button>
+    </form>
+  
+
+    <div *ngIf="submitted" class="review-section">
+      <h3>Review Your Investment</h3>
+      <p><strong>Asset Type: </strong> {{ reviewData.assetType | capitalize }}</p>
+      <p><strong>Quantity:</strong> {{ reviewData.quantity }}</p>
+      <p><strong>Purchase Price:</strong> ₹{{ reviewData.purchasePrice }}</p>
+      <p><strong>Date:</strong> {{ reviewData.purchaseDate | date }}</p>
+  
+      <div class="actions">
+        <button mat-button color="accent" (click)="submitted = false">Edit</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+      </div>
+    </div>
+  </div>
+  

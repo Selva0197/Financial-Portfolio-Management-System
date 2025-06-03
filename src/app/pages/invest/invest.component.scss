@@ -1,0 +1,44 @@
+/* src/app/pages/invest/invest.component.scss */
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    .investment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      .full-width {
+        width: 100%;
+      }
+    }
+  
+    .review-section {
+      text-align: left;
+  
+      h3 {
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        margin: 0.5rem 0;
+      }
+  
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 1rem;
+    }
+  }
+  
